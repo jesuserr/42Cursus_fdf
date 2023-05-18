@@ -11,43 +11,50 @@
 # **************************************************************************** #
 
 LIBFT_DIR = libft/
-LIBFT = libft.a
+LIBX_DIR = minilibx_macos/
 
-NAME_SERVER = fdf
-SRCS_SERVER = main.c
-OBJS_SERVER = $(SRCS_SERVER:.c=.o)
-DEPS_SERVER = $(SRCS_SERVER:.c=.d)
+NAME = fdf
+SRCS = main.c
+OBJS = $(SRCS:.c=.o)
+DEPS = $(SRCS:.c=.d)
 
 INCLUDE = -I./
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-NORM = ${SRCS_SERVER} fdf.h
+NORM = ${SRCS} fdf.h
 GREEN = "\033[0;92m"
 RED = "\033[0;91m"
 BLUE = "\033[0;94m"
 NC = "\033[37m"
 
-all: makelibft $(NAME_SERVER)
+LIBX = -lm -lmx -framework OpenGL -framework Appkit -L minilibx_macos
+
+all: makelibft makelibx $(NAME)
 
 makelibft:
 	@make --no-print-directory -C $(LIBFT_DIR)
 
+makelibx:
+	@make --no-print-directory -C $(LIBX_DIR)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
 
-$(NAME_SERVER): $(OBJS_SERVER) $(LIBFT_DIR)$(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS_SERVER) $(LIBFT_DIR)$(LIBFT) -o $@
--include $(DEPS_SERVER)
+$(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)libft.a $(LIBX) -o $@
+-include $(DEPS)
 
 clean:
 	@make clean --no-print-directory -C $(LIBFT_DIR)
-	$(RM) $(OBJS_SERVER) $(DEPS_SERVER)
+	@make clean --no-print-directory -C $(LIBX_DIR)
+	$(RM) $(OBJS) $(DEPS)
 		
 fclean:
-	@make fclean --no-print-directory -C $(LIBFT_DIR)	
-	$(RM) $(OBJS_SERVER) $(DEPS_SERVER)
-	$(RM) $(NAME_SERVER)
+	@make fclean --no-print-directory -C $(LIBFT_DIR)
+	@make clean --no-print-directory -C $(LIBX_DIR)
+	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(NAME)
 
 norm:
 	@echo ${BLUE}"\nChecking Norminette..."${NC}
@@ -57,4 +64,4 @@ norm:
 
 re: fclean all
 
-.PHONY: all clean fclean re makelibft norm
+.PHONY: all clean fclean re makelibft norm makelibx

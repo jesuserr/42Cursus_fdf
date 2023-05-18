@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 10:58:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/18 11:34:51 by jesuserr         ###   ########.fr       */
+/*   Created: 2023/05/18 13:20:00 by jesuserr          #+#    #+#             */
+/*   Updated: 2023/05/18 14:31:30 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
-	write (1, RED"Invalid arguments\n", 25);
+	ft_printf("\nhola %s", "adios");
+	ft_printf("%d", ft_strlen("hola adios"));
 	return (0);
 }
