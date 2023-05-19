@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/18 11:51:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:35:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 # include <unistd.h>    // for write, sleep, getpid
 # include <signal.h>    // for signal functions
 # include <stdlib.h>    // for exit
-# include <sys/time.h>  // for timer
-# include "libft/includes/libft.h"
-# include "libft/includes/ft_printf.h"
-# include "libft/includes/get_next_line.h"
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/01 17:30:23 by marvin            #+#    #+#              #
-#    Updated: 2023/04/18 17:37:32 by jesuserr         ###   ########.fr        #
+#    Created: 2023/05/19 13:35:34 by jesuserr          #+#    #+#              #
+#    Updated: 2023/05/19 13:35:34 by jesuserr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SRCS = main.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
-INCLUDE = -I./
+INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 NORM = ${SRCS} fdf.h
 GREEN = "\033[0;92m"
@@ -28,21 +28,25 @@ RED = "\033[0;91m"
 BLUE = "\033[0;94m"
 NC = "\033[37m"
 
-LIBX = -lm -lmx -framework OpenGL -framework Appkit -L minilibx_macos
+LIBX = -lmlx -framework OpenGL -framework Appkit -Lminilibx_macos/
 
 all: makelibft makelibx $(NAME)
 
 makelibft:
-	@make --no-print-directory -C $(LIBFT_DIR)
+	@make --no-print-directory -C $(LIBFT_DIR)	
+	@echo ${GREEN}"Libft Compiled!\n"${NC};
 
 makelibx:
-	@make --no-print-directory -C $(LIBX_DIR)
-
+	@make --no-print-directory -C $(LIBX_DIR) 2> ERRORS
+	@rm ERRORS
+	@echo ${GREEN}"MiniLibx Compiled!\n"${NC};
+	
 %.o: %.c
 	$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
-
+	
 $(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)libft.a $(LIBX) -o $@
+	@echo ${GREEN}"FdF Compiled!\n"${NC};
 -include $(DEPS)
 
 clean:
