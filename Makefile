@@ -18,7 +18,7 @@ SRCS = main.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
-INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes
+INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes/
 RM = rm -f
 CFLAGS = -O3 -Wall -Wextra -Werror
 
