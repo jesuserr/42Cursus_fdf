@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/25 21:41:04 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:50:47 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 
 # define ERROR_ARGS		0
 # define ERROR_FILE     1
+# define ERROR_MEM		2
+# define ERROR_EMPTY	3
+# define ERROR_MAP		4
+
+# define WIDTH			1024
+# define HEIGHT			768
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -30,15 +36,36 @@
 */
 # include "libft/includes/get_next_line.h"
 # include "libft/includes/ft_printf.h"
-//# include <unistd.h>    // for write, sleep, getpid
-//# include <signal.h>    // for signal functions
-//# include <stdlib.h>    // for exit
-//# include "libft/includes/libft.h"
+# include "libft/includes/libft.h"
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
-**                              FUNCTION PROTOTYPES
+**                              STRUCTS
 */
-void    ft_error_handler(int error);
+typedef struct s_fdf
+{
+	void	*mlx;
+	void	*mlx_win;
+	char	*raw_map;
+	int		x_elements;
+	int		y_elements;
+}	t_fdf;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
+/*
+** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
+**                        FUNCTION PROTOTYPES
+*/
+void	ft_error_handler(int error);
+
+void	free_memory(char **str);
 
 #endif
