@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/30 12:22:18 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:56:01 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,24 @@ void	ft_error_handler(int error)
 	else if (error == ERROR_MAP)
 		ft_printf ("%sInvalid map format\n", RED);
 	exit(EXIT_FAILURE);
+}
+
+/* To be used mainly with double pointers such the ones used on ft_split */
+
+void	free_memory(char **str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
+/* Used mainly to save lines of code and meet norm on some cases */
+
+void	free_and_exit(int error, char *ptr)
+{
+	free(ptr);
+	ft_error_handler(error);
 }
