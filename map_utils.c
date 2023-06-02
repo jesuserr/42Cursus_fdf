@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/31 20:38:15 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:35:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,32 +70,19 @@ int	count_x_elements(char *line, int jump)
 void	check_map(t_fdf *fdf)
 {
 	char	**split;
+	char	*backup;
 
 	fdf->y_elements = 0;
 	split = ft_split(fdf->raw_map, '\n');
 	while (split[fdf->y_elements])
 	{
-		if (count_x_elements(split[fdf->y_elements++], 1) != fdf->x_elements)
+		backup = split[fdf->y_elements++];
+		if (ft_strlen(backup) != ft_strspn(backup, STR_1)
+			|| count_x_elements(backup, 1) != fdf->x_elements)
 		{
 			free_memory(split);
 			free_and_exit(ERROR_MAP, fdf->raw_map);
-		}
-		ft_printf("\n%s\n", (split[fdf->y_elements - 1]));
+		}	
 	}
 	free_memory(split);
 }
-
-	//ft_printf("%s\n", (split[0]));
-	//ft_printf("%d\n", count_x_elements(split[0]));
-	/*	fdf->map = malloc (1000);
-	fdf->map->x = 1;
-	fdf->map->y = 2;
-	fdf->map->z = 3;
-	printf("%f", fdf->map->x);
-	fdf->map++;
-	fdf->map->x = 4;
-	fdf->map->y = 5;
-	fdf->map->z = 6;
-	printf("%f", fdf->map->y);
-	fdf->map--;
-	printf("%f", fdf->map->z);*/

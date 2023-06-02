@@ -14,7 +14,7 @@ put/ft_putchar_fd.c put/ft_putstr_fd.c put/ft_putendl_fd.c put/ft_putnbr_fd.c \
 str/ft_strchr.c str/ft_strdup.c str/ft_striteri.c str/ft_strjoin.c \
 str/ft_strlcat.c str/ft_strlcpy.c str/ft_strlen.c str/ft_strmapi.c \
 str/ft_strncmp.c str/ft_strnstr.c str/ft_strrchr.c str/ft_strtrim.c \
-str/ft_substr.c str/ft_split.c \
+str/ft_substr.c str/ft_split.c str/ft_strspn.c str/ft_strcspn.c \
 to/ft_tolower.c to/ft_toupper.c to/ft_atoi.c to/ft_itoa.c \
 
 OBJS = $(SRCS:.c=.o)
