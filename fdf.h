@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/02 11:40:38 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:35:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ typedef struct s_fdf
 	void	*mlx;
 	void	*mlx_win;
 	char	*raw_map;	
-	int		x_elements;
-	int		y_elements;
-	int		elements;
+	int		x_elem;
+	int		y_elem;
+	int		t_elem;
 	t_point	*map;
 }	t_fdf;
 
@@ -80,11 +80,11 @@ typedef struct s_img
 */
 char	*read_map(char *file, t_fdf *fdf);
 void	check_map(t_fdf *fdf);
-int		count_x_elements(char *line, int jump);
+int		count_x_elem(char *line, int jump);
+void	parse_map(t_fdf *fdf, char *line);
 
 void	ft_error_handler(int error);
-
-void	free_memory(char **str);
+void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 
 #endif

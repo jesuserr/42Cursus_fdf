@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/05/31 16:56:01 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:37:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	ft_error_handler(int error)
 	exit(EXIT_FAILURE);
 }
 
-/* To be used mainly with double pointers such the ones used on ft_split */
+/* To be used mainly with double pointers used on ft_split */
 
-void	free_memory(char **str)
+void	free_split(char **str)
 {
 	size_t	i;
 
