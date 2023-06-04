@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/03 21:06:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/04 14:26:20 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,10 @@ void	check_map(t_fdf *fdf)
 	if (!fdf->map)
 	{
 		free_split(split);
-		free_and_exit(ERROR_MEM, fdf->raw_map);		
+		free_and_exit(ERROR_MEM, fdf->raw_map);
 	}
 	i = 0;
+	ft_printf ("%sOK!\nParsing Map... ", BLUE);
 	while (split[i])
 		parse_map(fdf, split[i++]);
 	free_split(split);
@@ -98,7 +99,6 @@ void	check_map(t_fdf *fdf)
 
 // k can be replaced by (i + (j * fdf->x_elem)) - it's harder to read 
 // but can help to save a couple of lines
-// give sense to hex color
 
 void	parse_map(t_fdf *fdf, char *line)
 {
@@ -106,7 +106,7 @@ void	parse_map(t_fdf *fdf, char *line)
 	int			i;
 	static int	j = 0;
 	static int	k = 0;
-		
+
 	split = ft_split(line, ' ');
 	i = 0;
 	while (i < fdf->x_elem)
@@ -115,15 +115,43 @@ void	parse_map(t_fdf *fdf, char *line)
 		fdf->map[k].y = j + ((fdf->y_elem / -2.0) + 0.5);
 		fdf->map[k].z = ft_atoi(split[i]);
 		if (ft_strstr(split[i], ",0x"))
-			fdf->map[k].color = 16777215;
+			fdf->map[k].color = get_hex_color(split[i]);
 		else
-			fdf->map[k].color = -1;
-		//printf("\n%f %f %f", fdf->map[k].x, fdf->map[k].y, fdf->map[k].z);
-		//printf("%d ", fdf->map[k].color);
-		//ft_printf("%d ", k);
+			fdf->map[k].color = DEF_COLOR;
 		k++;
 		i++;
 	}
 	j++;
 	free_split(split);
 }
+//printf("\n%f %f %f", fdf->map[k].x, fdf->map[k].y, fdf->map[k].z);
+//ft_printf("%d ", fdf->map[k].color);
+//printf("%x ", fdf->map[k].color);
+//ft_printf("%d ", k);
+
+int	get_hex_color(char *hex_color)
+{
+	char	**split;
+	int		color;
+	int		i;
+	char	*str;
+
+	i = 0;
+	color = 0;
+	split = ft_split(hex_color, ',');
+	str = split[1] + 2;
+	while (i < 6)
+	{
+		color = color * 16;
+		if (str [i] >= '0' && str [i] <= '9')
+			color = color + str [i] - '0';
+		else if (str [i] >= 'a' && str [i] <= 'f')
+			color = color + str [i] - 87;
+		else if (str [i] >= 'A' && str [i] <= 'F')
+			color = color + str [i] - 55;
+		i++;
+	}	
+	free_split(split);
+	return (color);
+}
+//ft_printf("%d\n", color);
