@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/04 14:34:50 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 09:34:22 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_map(char *file, t_fdf *fdf)
 	ft_printf ("%sReading Map... ", BLUE);
 	fdf->raw_map = read_map(file, fdf);
 	fdf->y_elem = 0;
+	fdf->z_max = INT_MIN;
+	fdf->z_min = INT_MAX;
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);
@@ -36,6 +38,7 @@ int	main(int argc, char **argv)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &fdf);
 	//print_map(&fdf);
+	printf("\n%d %d", fdf.z_max, fdf.z_min);
 	free(fdf.raw_map);
 	free(fdf.map);
 	return (0);

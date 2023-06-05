@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/04 14:27:13 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 00:53:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_fdf
 	char	*raw_map;	
 	int		x_elem;
 	int		y_elem;
+	int		z_max;
+	int		z_min;
 //	int		t_elem;
 	t_point	*map;
 }	t_fdf;

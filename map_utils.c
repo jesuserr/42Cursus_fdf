@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/04 14:26:20 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 09:34:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,10 @@ void	parse_map(t_fdf *fdf, char *line)
 		fdf->map[k].x = i + ((fdf->x_elem / -2.0) + 0.5);
 		fdf->map[k].y = j + ((fdf->y_elem / -2.0) + 0.5);
 		fdf->map[k].z = ft_atoi(split[i]);
+		if (fdf->map[k].z > fdf->z_max)
+			fdf->z_max = fdf->map[k].z;
+		if (fdf->map[k].z < fdf->z_min)
+			fdf->z_min = fdf->map[k].z;
 		if (ft_strstr(split[i], ",0x"))
 			fdf->map[k].color = get_hex_color(split[i]);
 		else
