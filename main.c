@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/05 09:34:22 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:19:16 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &fdf);
-	//print_map(&fdf);
+	print_map(&fdf);
 	printf("\n%d %d", fdf.z_max, fdf.z_min);
 	free(fdf.raw_map);
 	free(fdf.map);

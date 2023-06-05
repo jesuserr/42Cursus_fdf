@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/03 21:37:49 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:01:28 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ void	free_split(char **str)
 
 void	free_and_exit(int error, char *ptr)
 {
+	free(ptr);
+	ft_error_handler(error);
+}
+
+/* Another free function to save space - Two previous functions combined */
+
+void	free_split_and_exit(char **str, int error, char *ptr)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 	free(ptr);
 	ft_error_handler(error);
 }

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/05 00:53:50 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/05 10:36:06 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_fdf
 	int		y_elem;
 	int		z_max;
 	int		z_min;
-//	int		t_elem;
 	t_point	*map;
 }	t_fdf;
 
@@ -89,6 +88,7 @@ int		get_hex_color(char *color);
 void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
+void	free_split_and_exit(char **str, int error, char *ptr);
 
 void	print_map(t_fdf *fdf);	//temporal for checking
 
