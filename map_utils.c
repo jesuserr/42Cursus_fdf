@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/06 15:21:34 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:45:29 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ int	get_hex_color(char *hex_color)
 	color = 0;
 	split = ft_split(hex_color, ',');
 	str = split[1] + 2;
-	while (i < 6)
+	while (i < 6 && str[i] != '\0')
 	{
 		color = color * 16;
 		if (str [i] >= '0' && str [i] <= '9')
