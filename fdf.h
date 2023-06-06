@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/06 15:23:08 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:28:35 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
+
+void	mlx_put_pixel(t_img *data, int x, int y, int color);
 
 void	print_map(t_fdf *fdf);	//temporal for checking
 
