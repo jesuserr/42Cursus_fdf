@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/05 10:36:06 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:23:08 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,19 @@ typedef struct s_img
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
 **                        FUNCTION PROTOTYPES
 */
-char	*read_map(char *file, t_fdf *fdf);
-void	check_map(t_fdf *fdf);
-int		count_x_elem(char *line, int jump);
-void	parse_map(t_fdf *fdf, char *line);
-int		get_hex_color(char *color);
-
 void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
 
 void	print_map(t_fdf *fdf);	//temporal for checking
+
+char	*read_map(char *file, t_fdf *fdf);
+void	check_map(t_fdf *fdf);
+int		count_x_elem(char *line, int jump);
+void	parse_map(t_fdf *fdf, char *line);
+int		get_hex_color(char *color);
+
+void	z_centering(t_fdf *fdf);
 
 #endif
