@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/06 16:28:35 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:42:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
 
 void	mlx_put_pixel(t_img *data, int x, int y, int color);
+
+int		key_hook(int keycode, t_fdf *fdf);
+int		mouse_hook(int button, int x, int y, t_fdf *fdf);
 
 void	print_map(t_fdf *fdf);	//temporal for checking
 

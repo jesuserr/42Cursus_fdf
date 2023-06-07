@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/07 00:03:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:40:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,9 @@ void	init_map(char *file, t_fdf *fdf)
 	//printf("\n%d %d", fdf->z_max, fdf->z_min);
 }
 
-	//fdf->t_elem = fdf->x_elem * fdf->y_elem;
 	//ft_printf("%s", fdf->raw_map);
 	//ft_printf(" x:%d ", fdf->x_elem);
 	//ft_printf(" y:%d ", fdf->y_elem);
-	//ft_printf(" total:%d ", fdf->elements);
-
-int	key_hook(int keycode, t_fdf *fdf)
-{
-	if (keycode == 53)
-	{
-		free(fdf->raw_map);
-		free(fdf->map);
-		exit (0);
-	}
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -64,11 +51,11 @@ int	main(int argc, char **argv)
 	}
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img, 0, 0);
 	mlx_key_hook(fdf.mlx_win, key_hook, &fdf);
+	mlx_mouse_hook(fdf.mlx_win, mouse_hook, &fdf);
 	mlx_loop(fdf.mlx);
-	//free(fdf.raw_map);
-	//free(fdf.map);
 	return (0);
 }
+//add mlx_hook
 
 void	print_map(t_fdf *fdf)
 {

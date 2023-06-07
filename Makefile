@@ -14,7 +14,7 @@ LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
 NAME = fdf
-SRCS = errors.c graphics.c main.c map_utils.c utils.c
+SRCS = errors.c graphics.c hooks.c main.c map_utils.c utils.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
