@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/06 17:40:53 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/07 00:03:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init_map(char *file, t_fdf *fdf)
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);
-	print_map(fdf);
-	printf("\n%d %d", fdf->z_max, fdf->z_min);
+	//print_map(fdf);
+	//printf("\n%d %d", fdf->z_max, fdf->z_min);
 }
 
 	//fdf->t_elem = fdf->x_elem * fdf->y_elem;
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	fdf;
 	t_img	img;
+	int		i;
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
@@ -55,7 +56,12 @@ int	main(int argc, char **argv)
 	fdf.mlx_win = mlx_new_window(fdf.mlx, WIDTH, HEIGHT, "FdF");
 	img.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
-	mlx_put_pixel(&img, 5, 5, 0x00FFFFFF);
+	i = 0;
+	while (i < (fdf.x_elem * fdf.y_elem))
+	{
+		mlx_put_pixel(&img, (fdf.map[i].x * 5) + (WIDTH / 2), (fdf.map[i].y * 5) + (HEIGHT / 2), fdf.map[i].color);
+		i++;
+	}
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img, 0, 0);
 	mlx_key_hook(fdf.mlx_win, key_hook, &fdf);
 	mlx_loop(fdf.mlx);
