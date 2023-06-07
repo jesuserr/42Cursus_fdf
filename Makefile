@@ -14,13 +14,13 @@ LIBFT_DIR = libft/
 LIBX_DIR = minilibx_macos/
 
 NAME = fdf
-SRCS = errors.c graphics.c hooks.c main.c map_utils.c utils.c
+SRCS = errors.c graphics.c hooks.c main.c map_utils.c rotations.c utils.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
 INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes/
 RM = rm -f
-CFLAGS = -O3 -Wall -Wextra -Werror #-lm flag??
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 NORM = ${SRCS} fdf.h
 GREEN = "\033[0;92m"

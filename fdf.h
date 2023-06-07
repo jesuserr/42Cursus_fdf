@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/07 12:42:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:30:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define HEIGHT		768
 # define STR_1		"-0123456789 ,xABCDEFabcdef"
 # define DEF_COLOR	16777215
+# define PI			3.141592654
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -41,6 +42,7 @@
 # include "libft/includes/libft.h"
 # include "mlx.h"
 # include <fcntl.h>	// for open
+# include <math.h>
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -96,6 +98,10 @@ void	check_map(t_fdf *fdf);
 int		count_x_elem(char *line, int jump);
 void	parse_map(t_fdf *fdf, char *line);
 int		get_hex_color(char *color);
+
+void	rotate_x(t_fdf *fdf, float angle);
+void	rotate_y(t_fdf *fdf, float angle);
+void	rotate_z(t_fdf *fdf, float angle);
 
 void	z_centering(t_fdf *fdf);
 
