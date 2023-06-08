@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/06 15:45:29 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:20:17 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	count_x_elem(char *line, int jump)
 /* Verifies that all lines have the same number of elements */
 /* and that each line doesn't contain forbidden characters (STR_1) */
 /* If there is only one line (no 3D element) -> finishes too */
-/* After parsing the map, centers also the Z coordinates, figure centered */
+/* After map parsing, centers and scales Z coordinates, figure 100% centered */
 
 void	check_map(t_fdf *fdf)
 {
@@ -168,4 +168,3 @@ int	get_hex_color(char *hex_color)
 	free_split(split);
 	return (color);
 }
-//ft_printf("%d\n", color);

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/07 16:53:51 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:00:33 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,30 @@ void	init_map(char *file, t_fdf *fdf)
 	fdf->y_elem = 0;
 	fdf->z_max = INT_MIN;
 	fdf->z_min = INT_MAX;
+	fdf->scale_z = SCALE_Z;
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);
-	//print_map(fdf);
-	//printf("\n%d %d", fdf->z_max, fdf->z_min);
 }
 
-	//ft_printf("%s", fdf->raw_map);
-	//ft_printf(" x:%d ", fdf->x_elem);
-	//ft_printf(" y:%d ", fdf->y_elem);
+void	init_win(t_fdf *fdf, t_img *img, char *s)
+{
+	fdf->mlx = mlx_init();
+	fdf->mlx_win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, s);
+	img->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
+}
 
 int	main(int argc, char **argv)
 {
 	t_fdf	fdf;
 	t_img	img;
-	int		i;
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &fdf);
-	fdf.mlx = mlx_init();
-	fdf.mlx_win = mlx_new_window(fdf.mlx, WIDTH, HEIGHT, "FdF");
-	img.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
-	rotate_x(&fdf, 45);
-	rotate_y(&fdf, 45);
-	rotate_z(&fdf, 15);
-	i = 0;
-	while (i < (fdf.x_elem * fdf.y_elem))
-	{
-		mlx_put_pixel(&img, (fdf.map[i].x * 15) + (WIDTH / 2), (fdf.map[i].y * 15) + (HEIGHT / 2), fdf.map[i].color);
-		i++;
-	}
+	init_win(&fdf, &img, argv[1]);
+	iso_view(&fdf, &img);
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img, 0, 0);
 	mlx_key_hook(fdf.mlx_win, key_hook, &fdf);
 	mlx_mouse_hook(fdf.mlx_win, mouse_hook, &fdf);
