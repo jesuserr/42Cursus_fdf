@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 19:06:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:19:18 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@ void	mlx_put_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	iso_view(t_fdf *fdf, t_img *img)
-{
-	rotate_x(fdf, 45);
-	rotate_y(fdf, 35);
-	rotate_z(fdf, 30);
-	projection(fdf, img);
-}
+/* DRAFT */
+/* The function has to deal with values outside screen boundaries */
 
 void	draw_line(t_line line, t_img *img)
 {

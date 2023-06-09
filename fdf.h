@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 19:19:36 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:24:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
 
 void	mlx_put_pixel(t_img *img, int x, int y, int color);
-void	iso_view(t_fdf *fdf, t_img *img);
 void	draw_line(t_line line, t_img *img);
 
 int		key_hook(int keycode, t_fdf *fdf);
@@ -109,7 +108,7 @@ int		mouse_hook(int button, int x, int y, t_fdf *fdf);
 
 void	init_map(char *file, t_fdf *fdf);
 void	init_win(t_fdf *fdf, t_img *img, char *s);
-void	print_map(t_fdf *fdf);	//temporal for checking
+void	iso_view(t_fdf *fdf, t_img *img);
 
 char	*read_map(char *file, t_fdf *fdf);
 void	check_map(t_fdf *fdf);
@@ -117,13 +116,16 @@ int		count_x_elem(char *line, int jump);
 void	parse_map(t_fdf *fdf, char *line);
 int		get_hex_color(char *color);
 
-void	rotate_x(t_fdf *fdf, float angle);
-void	rotate_y(t_fdf *fdf, float angle);
-void	rotate_z(t_fdf *fdf, float angle);
 void	projection(t_fdf *fdf, t_img *img);
 void	project_x_lines(t_fdf *fdf, t_img *img);
 void	project_y_lines(t_fdf *fdf, t_img *img);
+void	project_points(t_fdf *fdf, t_img *img);
+
+void	rotate_x(t_fdf *fdf, float angle);
+void	rotate_y(t_fdf *fdf, float angle);
+void	rotate_z(t_fdf *fdf, float angle);
 
 void	z_centering(t_fdf *fdf);
+void	print_map(t_fdf *fdf);	//temporal for checking
 
 #endif

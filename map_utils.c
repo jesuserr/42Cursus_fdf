@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 19:20:37 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:11:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	count_x_elem(char *line, int jump)
 }
 
 /* Verifies that all lines have the same number of elements */
-/* and that each line doesn't contain any forbidden character (ALLOWED_CHR) */
+/* and that no line contains any forbidden characters (ALLOWED_CHR) */
 /* If there is only one line (no 3D element) -> finishes too */
 /* After map parsing, centers and scales Z coordinates, figure 100% centered */
 
@@ -81,6 +81,7 @@ void	check_map(t_fdf *fdf)
 	int		i;
 
 	split = ft_split(fdf->raw_map, '\n');
+	fdf->y_elem = 0;
 	while (split[fdf->y_elem])
 	{
 		line = split[fdf->y_elem++];
@@ -94,7 +95,7 @@ void	check_map(t_fdf *fdf)
 	if (!fdf->map)
 		free_split_and_exit(split, ERROR_MEM, fdf->raw_map);
 	i = 0;
-	ft_printf ("%sOK!\nParsing Map... ", BLUE);
+	ft_printf ("%sOK!\nParsing Map..... ", BLUE);
 	while (split[i])
 		parse_map(fdf, split[i++]);
 	z_centering(fdf);
@@ -104,7 +105,7 @@ void	check_map(t_fdf *fdf)
 /* Parses the map in such way that X = 0 and Y = 0 are in the center */
 /* Determines max and min values of Z to center all heights later */
 /* Note: k can be replaced by (i + (j * fdf->x_elem)) */
-/*       harder to read but can help to salve a couple of lines if needed */
+/*       harder to read but can help to save a couple of lines if needed */
 
 void	parse_map(t_fdf *fdf, char *line)
 {
@@ -134,10 +135,6 @@ void	parse_map(t_fdf *fdf, char *line)
 	j++;
 	free_split(split);
 }
-//printf("\n%f %f %f", fdf->map[k].x, fdf->map[k].y, fdf->map[k].z);
-//ft_printf("%d ", fdf->map[k].color);
-//printf("%x ", fdf->map[k].color);
-//ft_printf("%d ", k);
 
 /* Converts the str containing the hex color to an int value */
 /* similar philosophy as ft_atoi */
