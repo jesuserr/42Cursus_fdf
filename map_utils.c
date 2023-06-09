@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/08 16:20:17 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:19:54 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ void	check_map(t_fdf *fdf)
 	ft_printf ("%sOK!\nParsing Map... ", BLUE);
 	while (split[i])
 		parse_map(fdf, split[i++]);
-	if (fdf->z_max != -fdf->z_min)
-		z_centering(fdf);
+	z_centering(fdf);
 	free_split(split);
 }
 
