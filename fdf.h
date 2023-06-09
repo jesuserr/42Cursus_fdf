@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 12:18:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:19:36 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # define ERROR_EMPTY		3
 # define ERROR_MAP			4
 
-# define WIDTH		1024
-# define HEIGHT		768
-# define STR_1		"-0123456789 ,xABCDEFabcdef"
-# define DEF_COLOR	16777215
-# define PI			3.141592654
-# define INIT_SCALE	0.66
+# define WIDTH			1024
+# define HEIGHT			768
+# define ALLOWED_CHR	"-0123456789 ,xABCDEFabcdef"
+# define DEF_COLOR		16777215
+# define PI				3.141592654
+# define INIT_SCALE		0.66
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -55,6 +55,16 @@ typedef struct s_point
 	float	z;
 	int		color;	
 }	t_point;
+
+typedef struct s_line
+{
+	int		x0;
+	int		y0;
+	int		x1;
+	int		y1;
+	int		color0;
+	int		color1;	
+}	t_line;
 
 typedef struct s_fdf
 {
@@ -90,8 +100,9 @@ void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
 
-void	mlx_put_pixel(t_img *data, int x, int y, int color);
+void	mlx_put_pixel(t_img *img, int x, int y, int color);
 void	iso_view(t_fdf *fdf, t_img *img);
+void	draw_line(t_line line, t_img *img);
 
 int		key_hook(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
@@ -110,6 +121,8 @@ void	rotate_x(t_fdf *fdf, float angle);
 void	rotate_y(t_fdf *fdf, float angle);
 void	rotate_z(t_fdf *fdf, float angle);
 void	projection(t_fdf *fdf, t_img *img);
+void	project_x_lines(t_fdf *fdf, t_img *img);
+void	project_y_lines(t_fdf *fdf, t_img *img);
 
 void	z_centering(t_fdf *fdf);
 

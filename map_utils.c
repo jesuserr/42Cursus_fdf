@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 12:19:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:20:37 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	count_x_elem(char *line, int jump)
 }
 
 /* Verifies that all lines have the same number of elements */
-/* and that each line doesn't contain forbidden characters (STR_1) */
+/* and that each line doesn't contain any forbidden character (ALLOWED_CHR) */
 /* If there is only one line (no 3D element) -> finishes too */
 /* After map parsing, centers and scales Z coordinates, figure 100% centered */
 
@@ -84,7 +84,7 @@ void	check_map(t_fdf *fdf)
 	while (split[fdf->y_elem])
 	{
 		line = split[fdf->y_elem++];
-		if (ft_strlen(line) != ft_strspn(line, STR_1)
+		if (ft_strlen(line) != ft_strspn(line, ALLOWED_CHR)
 			|| count_x_elem(line, 1) != fdf->x_elem)
 			free_split_and_exit(split, ERROR_MAP, fdf->raw_map);
 	}

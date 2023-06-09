@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:25:20 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 12:19:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:35:32 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	z_centering(t_fdf *fdf)
 	fdf->scale_z = (-0.0004 * (fdf->z_max - fdf->z_min)) + 0.1044;
 	if (fdf->scale_z < 0.05)
 		fdf->scale_z = 0.05;
-	printf("\n%d %d %f\n", fdf->z_min, fdf->z_max, fdf->scale_z);
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
 		fdf->map[i].z -= ((fdf->z_max + fdf->z_min) / 2.0);
