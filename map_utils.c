@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 20:11:24 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:15:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*read_map(char *file, t_fdf *fdf)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		ft_error_handler(ERROR_FILE);
+	ft_printf ("%sReading Map..... ", BLUE);
 	line = get_next_line(fd);
 	if (!line)
 		ft_error_handler(ERROR_EMPTY);

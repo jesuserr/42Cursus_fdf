@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 20:24:49 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:04:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ typedef struct s_line
 	int		color1;	
 }	t_line;
 
+typedef struct s_line_aux
+{
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		error;	
+}	t_line_aux;
+
 typedef struct s_fdf
 {
 	void	*mlx;
@@ -102,6 +111,7 @@ void	free_split_and_exit(char **str, int error, char *ptr);
 
 void	mlx_put_pixel(t_img *img, int x, int y, int color);
 void	draw_line(t_line line, t_img *img);
+void	line_direction(t_line *line, t_line_aux *line_aux);
 
 int		key_hook(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
