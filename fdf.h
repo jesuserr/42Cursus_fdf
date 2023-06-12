@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 09:59:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:05:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ void	line_direction(t_line *line, t_line_aux *line_aux);
 
 int		key_hook(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
+int		close_window(t_fdf *fdf);
 
 void	init_map(char *file, t_fdf *fdf);
 void	init_win(t_fdf *fdf, t_img *img, char *s);
 void	iso_view(t_fdf *fdf, t_img *img);
+void	init_hooks(t_fdf *fdf);
 
 char	*read_map(char *file, t_fdf *fdf);
 void	check_map(t_fdf *fdf);

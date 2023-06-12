@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 10:13:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:01:30 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	iso_view(t_fdf *fdf, t_img *img)
 	rotate_y(fdf, 35);
 	rotate_z(fdf, 30);
 	projection(fdf, img);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img->img, 0, 0);
+}
+
+void	init_hooks(t_fdf *fdf)
+{
+	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
+	mlx_key_hook(fdf->mlx_win, key_hook, fdf);
+	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
 }
 
 int	main(int argc, char **argv)
@@ -54,9 +62,7 @@ int	main(int argc, char **argv)
 	init_map(argv[1], &fdf);
 	init_win(&fdf, &img, argv[1]);
 	iso_view(&fdf, &img);
-	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img, 0, 0);
-	mlx_key_hook(fdf.mlx_win, key_hook, &fdf);
-	mlx_mouse_hook(fdf.mlx_win, mouse_hook, &fdf);
+	init_hooks(&fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }

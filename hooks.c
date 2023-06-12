@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 10:21:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:01:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_hook(int keycode, t_fdf *fdf)
 		free(fdf->map);
 		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
 		free(fdf->mlx);
-		exit (0);
+		exit (EXIT_SUCCESS);
 	}
 	return (0);
 }
@@ -32,4 +32,13 @@ int	mouse_hook(int button, int x, int y, t_fdf *fdf)
 	(void)fdf;
 	ft_printf("\n%d %d %d", button, x, y);
 	return (0);
+}
+
+int	close_window(t_fdf *fdf)
+{
+	free(fdf->raw_map);
+	free(fdf->map);
+	mlx_destroy_window(fdf->mlx, fdf->mlx_win);
+	free(fdf->mlx);
+	exit (EXIT_SUCCESS);
 }
