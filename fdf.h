@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/11 19:04:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/12 09:59:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define ERROR_MEM			2
 # define ERROR_EMPTY		3
 # define ERROR_MAP			4
+# define ERROR_MLX			5
 
 # define WIDTH			1024
 # define HEIGHT			768
@@ -108,6 +109,7 @@ void	ft_error_handler(int error);
 void	free_split(char **str);
 void	free_and_exit(int error, char *ptr);
 void	free_split_and_exit(char **str, int error, char *ptr);
+void	free_map_and_exit(t_fdf *fdf, int error, int flag);
 
 void	mlx_put_pixel(t_img *img, int x, int y, int color);
 void	draw_line(t_line line, t_img *img);

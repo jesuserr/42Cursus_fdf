@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/11 18:52:17 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:13:41 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ void	init_map(char *file, t_fdf *fdf)
 void	init_win(t_fdf *fdf, t_img *img, char *s)
 {
 	fdf->mlx = mlx_init();
+	if (!fdf->mlx)
+		free_map_and_exit(fdf, ERROR_MLX, 0);
 	fdf->mlx_win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, s);
+	if (!fdf->mlx_win)
+		free_map_and_exit(fdf, ERROR_MLX, 1);
 	img->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	if (!img->img)
+		free_map_and_exit(fdf, ERROR_MLX, 2);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
 }
 
@@ -54,4 +60,3 @@ int	main(int argc, char **argv)
 	mlx_loop(fdf.mlx);
 	return (0);
 }
-//add mlx_hook - protect mlx calls?
