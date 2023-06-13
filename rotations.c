@@ -6,13 +6,27 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:22:46 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/09 19:44:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:45:21 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /* All rotations are clockwise */
+
+void	rotate(t_fdf *fdf)
+{
+	rotate_x(fdf, fdf->angle_x);
+	rotate_y(fdf, fdf->angle_y);
+	rotate_z(fdf, fdf->angle_z);
+}
+
+void	unrotate(t_fdf *fdf)
+{
+	rotate_z(fdf, -fdf->angle_z);
+	rotate_y(fdf, -fdf->angle_y);
+	rotate_x(fdf, -fdf->angle_x);
+}
 
 void	rotate_x(t_fdf *fdf, float angle)
 {

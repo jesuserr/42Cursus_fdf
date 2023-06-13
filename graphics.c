@@ -6,24 +6,24 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/11 19:01:14 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/13 19:19:47 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	mlx_put_pixel(t_img *img, int x, int y, int color)
+void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->len + x * (img->bpp / 8));
+	dst = fdf->img.addr + (y * fdf->img.len + x * (fdf->img.bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
 /* Uses Bresenham's line algorithm extended to work in any octant */
 /* Pixels outside screen boundaries are not printed */
 
-void	draw_line(t_line line, t_img *img)
+void	draw_line(t_line line, t_fdf *fdf)
 {
 	t_line_aux	line_aux;
 
@@ -34,7 +34,7 @@ void	draw_line(t_line line, t_img *img)
 	while (!(line.x0 == line.x1 && line.y0 == line.y1))
 	{
 		if (line.x0 > 0 && line.y0 > 0 && line.x0 < WIDTH && line.y0 < HEIGHT)
-			mlx_put_pixel(img, line.x0, line.y0, line.color0);
+			mlx_put_pixel(fdf, line.x0, line.y0, line.color0);
 		if ((2 * line_aux.error) >= line_aux.dy)
 		{			
 			line_aux.error = line_aux.error + line_aux.dy;

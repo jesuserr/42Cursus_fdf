@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 17:01:30 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/13 20:02:49 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_map(char *file, t_fdf *fdf)
 	ft_printf ("%sOK!\n", BLUE);
 }
 
-void	init_win(t_fdf *fdf, t_img *img, char *s)
+void	init_win(t_fdf *fdf, char *s)
 {
 	fdf->mlx = mlx_init();
 	if (!fdf->mlx)
@@ -30,19 +30,26 @@ void	init_win(t_fdf *fdf, t_img *img, char *s)
 	fdf->mlx_win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, s);
 	if (!fdf->mlx_win)
 		free_map_and_exit(fdf, ERROR_MLX, 1);
-	img->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
-	if (!img->img)
+	fdf->img.img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	if (!fdf->img.img)
 		free_map_and_exit(fdf, ERROR_MLX, 2);
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp, \
+		&fdf->img.len, &fdf->img.endian);
 }
 
-void	iso_view(t_fdf *fdf, t_img *img)
+void	iso_view(t_fdf *fdf)
 {
-	rotate_x(fdf, 45);
-	rotate_y(fdf, 35);
-	rotate_z(fdf, 30);
-	projection(fdf, img);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, img->img, 0, 0);
+	fdf->angle_x = 45;
+	fdf->angle_y = 35;
+	fdf->angle_z = 30;
+	rotate(fdf);
+	projection(fdf);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
+	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
+	unrotate(fdf);
+	rotate(fdf);
+	projection(fdf);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
 }
 
 void	init_hooks(t_fdf *fdf)
@@ -54,14 +61,13 @@ void	init_hooks(t_fdf *fdf)
 
 int	main(int argc, char **argv)
 {
-	t_fdf	fdf;
-	t_img	img;
+	t_fdf	fdf;	
 
 	if (argc != 2)
 		ft_error_handler(ERROR_ARGS);
 	init_map(argv[1], &fdf);
-	init_win(&fdf, &img, argv[1]);
-	iso_view(&fdf, &img);
+	init_win(&fdf, argv[1]);
+	iso_view(&fdf);
 	init_hooks(&fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
