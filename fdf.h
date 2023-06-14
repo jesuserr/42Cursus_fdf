@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 09:00:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:43:41 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define PI				3.141592654
 # define INIT_SCALE		0.66
 # define ROT_ANGLE		5
+# define INIT_ZOOM		1
+# define INC_ZOOM		1.1
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -102,6 +104,7 @@ typedef struct s_fdf
 	float	angle_x;
 	float	angle_y;
 	float	angle_z;
+	float	zoom;
 	t_point	*map;
 	t_img	img;
 }	t_fdf;
@@ -122,6 +125,7 @@ void	line_direction(t_line *line, t_line_aux *line_aux);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 void	redraw(int keycode, t_fdf *fdf);
+void	redraw_2(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
 

@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/13 19:16:54 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:38:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 void	projection(t_fdf *fdf)
 {
-	fdf->scale_x = (WIDTH * INIT_SCALE) / (fdf->x_elem - 1);
-	fdf->scale_y = (HEIGHT * INIT_SCALE) / (fdf->y_elem - 1);
+	fdf->scale_x = (WIDTH * INIT_SCALE * fdf->zoom) / (fdf->x_elem - 1);
+	fdf->scale_y = (HEIGHT * INIT_SCALE * fdf->zoom) / (fdf->y_elem - 1);
 	if (fdf->scale_x < fdf->scale_y)
 		fdf->scale = fdf->scale_x;
 	else
