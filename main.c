@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 12:05:48 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:19:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
 	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);
-	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
+	mlx_hook(fdf->mlx_win, 4, 0, mouse_pressed, fdf);
 }
 
 int	main(int argc, char **argv)

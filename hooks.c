@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 12:55:19 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:29:44 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@ int	key_pressed(int keycode, t_fdf *fdf)
 	else if (keycode == 13 || keycode == 12 || keycode == 0 || keycode == 1
 		|| keycode == 6 || keycode == 7 || keycode == 34)
 		key_action_1(keycode, fdf);
-	else if (keycode == 14 || keycode == 15 || keycode == 35)
-		key_action_2(keycode, fdf);
-	else if (keycode == 123 || keycode == 124 || keycode == 125
+	else if (keycode == 35 || keycode == 123 || keycode == 124 || keycode == 125
 		|| keycode == 126)
 		key_action_2(keycode, fdf);
-	printf("\n%d", keycode);
+	printf("\n%d %d %d", keycode, fdf->offset_x, fdf->offset_y);
+	return (0);
+}
+
+int	mouse_pressed(int button, int x, int y, t_fdf *fdf)
+{
+	(void)x;
+	(void)y;
+	if (button == 4)
+		mouse_action_1(button, fdf);
+	else if (button == 5)
+		mouse_action_1(button, fdf);
 	return (0);
 }
 
@@ -37,11 +46,4 @@ int	close_window(t_fdf *fdf)
 	mlx_destroy_window(fdf->mlx, fdf->mlx_win);
 	free(fdf->mlx);
 	exit (EXIT_SUCCESS);
-}
-
-int	mouse_hook(int button, int x, int y, t_fdf *fdf)
-{
-	(void)fdf;
-	ft_printf("\n%d %d %d", button, x, y);
-	return (0);
 }
