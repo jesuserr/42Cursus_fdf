@@ -6,15 +6,15 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 10:38:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:00:02 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/* Scales figure according to screen size and INIT_SCALE value */
+/* Scales figure according to screen size, INIT_SCALE value and user zoom */
 /* Uses the worst case scale (smaller one) between x and y */
-/* Writes projection directly in screen buffer */
+/* Writes projection directly in screen buffer (img) */
 
 void	projection(t_fdf *fdf)
 {
@@ -32,6 +32,7 @@ void	projection(t_fdf *fdf)
 /* Draws a line between each pair of horizontal points */
 /* A copy of struct "line" is passed to draw_line since */
 /* values are modified inside and would affect this function */
+/* Offset used for translation of the figure by user */
 
 void	project_x_lines(t_fdf *fdf)
 {
@@ -41,8 +42,8 @@ void	project_x_lines(t_fdf *fdf)
 	i = 0;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
-		line.x0 = (fdf->map[i].x * fdf->scale) + (WIDTH / 2);
-		line.y0 = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2);
+		line.x0 = (fdf->map[i].x * fdf->scale) + (WIDTH / 2) + fdf->offset_x;
+		line.y0 = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2) + fdf->offset_y;
 		line.color0 = fdf->map[i].color;
 		if ((i % fdf->x_elem) != 0)
 			draw_line(line, fdf);
@@ -56,6 +57,7 @@ void	project_x_lines(t_fdf *fdf)
 /* Draws a line between each pair of vertical points */
 /* A copy of struct "line" is passed to draw_line since */
 /* values are modified inside and would affect this function */
+/* Offset used for translation of the figure by user */
 
 void	project_y_lines(t_fdf *fdf)
 {
@@ -65,8 +67,8 @@ void	project_y_lines(t_fdf *fdf)
 	i = 0;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
-		line.x0 = (fdf->map[i].x * fdf->scale) + (WIDTH / 2);
-		line.y0 = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2);
+		line.x0 = (fdf->map[i].x * fdf->scale) + (WIDTH / 2) + fdf->offset_x;
+		line.y0 = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2) + fdf->offset_y;
 		line.color0 = fdf->map[i].color;
 		if ((i >= fdf->x_elem))
 			draw_line(line, fdf);
@@ -83,6 +85,7 @@ void	project_y_lines(t_fdf *fdf)
 
 /* Draws only the points, no lines */
 /* Values outside screen boundaries are not printed */
+/* Offset used for translation of the figure by user */
 
 void	project_points(t_fdf *fdf)
 {
@@ -93,8 +96,8 @@ void	project_points(t_fdf *fdf)
 	i = 0;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
-		x = (fdf->map[i].x * fdf->scale) + (WIDTH / 2);
-		y = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2);
+		x = (fdf->map[i].x * fdf->scale) + (WIDTH / 2) + fdf->offset_x;
+		y = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2) + fdf->offset_y;
 		if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
 			mlx_put_pixel(fdf, x, y, fdf->map[i].color);
 		i++;

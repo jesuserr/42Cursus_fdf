@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 10:43:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:46:56 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define ROT_ANGLE		5
 # define INIT_ZOOM		1
 # define INC_ZOOM		1.1
+# define INIT_OFFSET_X	0
+# define INIT_OFFSET_Y	0
+# define INC_OFFSET		10
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -105,6 +108,8 @@ typedef struct s_fdf
 	float	angle_y;
 	float	angle_z;
 	float	zoom;
+	int		offset_x;
+	int		offset_y;
 	t_point	*map;
 	t_img	img;
 }	t_fdf;
@@ -124,8 +129,6 @@ void	draw_line(t_line line, t_fdf *fdf);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 
 int		key_pressed(int keycode, t_fdf *fdf);
-void	redraw(int keycode, t_fdf *fdf);
-void	redraw_2(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
 
@@ -139,6 +142,10 @@ void	check_map(t_fdf *fdf);
 int		count_x_elem(char *line, int jump);
 void	parse_map(t_fdf *fdf, char *line);
 int		get_hex_color(char *color);
+
+void	key_action_1(int keycode, t_fdf *fdf);
+void	key_action_2(int keycode, t_fdf *fdf);
+void	key_action_aux(t_fdf *fdf);
 
 void	projection(t_fdf *fdf);
 void	project_x_lines(t_fdf *fdf);

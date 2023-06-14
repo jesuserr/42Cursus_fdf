@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 11:01:03 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:55:19 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,62 +18,17 @@ int	key_pressed(int keycode, t_fdf *fdf)
 		close_window(fdf);
 	else if (keycode == 13 || keycode == 12 || keycode == 0 || keycode == 1
 		|| keycode == 6 || keycode == 7 || keycode == 34)
-		redraw(keycode, fdf);
+		key_action_1(keycode, fdf);
 	else if (keycode == 14 || keycode == 15 || keycode == 35)
-		redraw_2(keycode, fdf);
+		key_action_2(keycode, fdf);
+	else if (keycode == 123 || keycode == 124 || keycode == 125
+		|| keycode == 126)
+		key_action_2(keycode, fdf);
+	printf("\n%d", keycode);
 	return (0);
 }
 
-void	redraw(int keycode, t_fdf *fdf)
-{
-	unrotate(fdf);
-	if (keycode == 13)
-		fdf->angle_x += ROT_ANGLE;
-	else if (keycode == 12)
-		fdf->angle_x -= ROT_ANGLE;
-	else if (keycode == 0)
-		fdf->angle_y += ROT_ANGLE;
-	else if (keycode == 1)
-		fdf->angle_y -= ROT_ANGLE;
-	else if (keycode == 6)
-		fdf->angle_z += ROT_ANGLE;
-	else if (keycode == 7)
-		fdf->angle_z -= ROT_ANGLE;
-	else if (keycode == 34)
-	{
-		fdf->zoom = INIT_ZOOM;
-		fdf->angle_x = 45;
-		fdf->angle_y = 35;
-		fdf->angle_z = 30;
-	}
-	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
-	rotate(fdf);
-	projection(fdf);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
-	return ;
-}
-
-void	redraw_2(int keycode, t_fdf *fdf)
-{
-	unrotate(fdf);
-	if (keycode == 14)
-		fdf->zoom *= INC_ZOOM;
-	else if (keycode == 15)
-		fdf->zoom /= INC_ZOOM;
-	else if (keycode == 35)
-	{
-		fdf->zoom = INIT_ZOOM;
-		fdf->angle_x = 90;
-		fdf->angle_y = 0;
-		fdf->angle_z = 0;
-	}
-	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
-	rotate(fdf);
-	projection(fdf);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
-	return ;
-}
-/* Without mlx_destroy_window and free(fdf->mlx) there is no leaks either !?? */
+/* Without mlx_destroy_window & free(fdf->mlx) there are no leaks either !?? */
 
 int	close_window(t_fdf *fdf)
 {
