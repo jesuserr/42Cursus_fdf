@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/13 20:03:23 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 09:00:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@
 # define WIDTH			1024
 # define HEIGHT			768
 # define ALLOWED_CHR	"-0123456789 ,xABCDEFabcdef"
-# define DEF_COLOR		16777215
+# define DEF_COLOR		0xf26e04
 # define PI				3.141592654
 # define INIT_SCALE		0.66
+# define ROT_ANGLE		5
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -119,7 +120,8 @@ void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color);
 void	draw_line(t_line line, t_fdf *fdf);
 void	line_direction(t_line *line, t_line_aux *line_aux);
 
-int		key_hook(int keycode, t_fdf *fdf);
+int		key_pressed(int keycode, t_fdf *fdf);
+void	redraw(int keycode, t_fdf *fdf);
 int		mouse_hook(int button, int x, int y, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
 

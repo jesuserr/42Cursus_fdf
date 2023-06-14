@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/13 20:02:49 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/14 08:39:53 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,12 @@ void	iso_view(t_fdf *fdf)
 	rotate(fdf);
 	projection(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
-	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
-	unrotate(fdf);
-	rotate(fdf);
-	projection(fdf);
-	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
 }
 
 void	init_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
-	mlx_key_hook(fdf->mlx_win, key_hook, fdf);
+	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);
 	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
 }
 
