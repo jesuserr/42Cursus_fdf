@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 15:39:28 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/16 00:09:09 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-/* Uses Bresenham's line algorithm extended to work in any octant */
+/* Uses Bresenham's line algorithm (extended to work in any octant) */
 /* Pixels outside screen boundaries (including info bar) are not printed */
 
 void	draw_line(t_line line, t_fdf *fdf)
@@ -83,19 +83,19 @@ void	print_info(t_fdf *fdf)
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 420, 10, WHITE, "A/S");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 470, 10, DEF_COLOR, "Rot.z:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 540, 10, WHITE, "Z/X");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 590, 10, DEF_COLOR, "P.View:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 670, 10, WHITE, "P");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 700, 10, DEF_COLOR, "Iso View:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 800, 10, WHITE, "Press Mouse Wheel");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 590, 10, DEF_COLOR, "Alt.Views:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 700, 10, WHITE, "I/O/P");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 770, 10, DEF_COLOR, "Zoom:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 830, 10, WHITE, "Mouse Wheel");
 	print_next_line(fdf);
 }
 
 void	print_next_line(t_fdf *fdf)
 {
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 230, 35, DEF_COLOR, "Zoom:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 300, 35, WHITE, "Mouse Wheel");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 230, 35, DEF_COLOR, "Iso View:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 330, 35, WHITE, "Press Wheel");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 470, 35, DEF_COLOR, "Scale Height:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 610, 35, WHITE, "Mouse RB/LB");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 740, 35, DEF_COLOR, "Move:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 800, 35, WHITE, "Arrow Keys");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 770, 35, DEF_COLOR, "Move:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 830, 35, WHITE, "Arrow Keys");
 }

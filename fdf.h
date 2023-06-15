@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 15:12:43 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/16 00:00:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@
 # define DEF_COLOR		0xf26e04
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
-# define INIT_SCALE		0.66
+# define INIT_SCALE		0.75
 # define ROT_ANGLE		1
 # define INIT_ZOOM		1
 # define INC_ZOOM		1.03
 # define INIT_OFFSET_X	0
 # define INIT_OFFSET_Y	0
-# define INC_OFFSET		5
+# define INC_OFFSET		10
 # define INC_ZOOM_Z		1.1
 # define BAR_INFO_H		65
 # define MIN_WIDTH		1000
@@ -155,6 +155,7 @@ int		get_hex_color(char *color);
 
 void	key_action_1(int keycode, t_fdf *fdf);
 void	key_action_2(int keycode, t_fdf *fdf);
+void	key_action_3(int keycode, t_fdf *fdf);
 void	mouse_action_1(int button, t_fdf *fdf);
 void	action_aux(t_fdf *fdf);
 
