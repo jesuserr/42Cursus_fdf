@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 12:27:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:24:14 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,28 @@ void	mouse_action_1(int button, t_fdf *fdf)
 	}	
 	action_aux(fdf);
 }
-/* Erases the image in memory, calculates and writes the new one */
+/* Erases the image in memory; calculates and writes the new one */
+/* Keeps angles always between 0-359 degrees and prints info bar */
+/* if screen is big enough */
 
 void	action_aux(t_fdf *fdf)
 {
 	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
+	if (fdf->angle_x == 360)
+		fdf->angle_x = 0;
+	else if (fdf->angle_x == -1)
+		fdf->angle_x = 359;
+	if (fdf->angle_y == 360)
+		fdf->angle_y = 0;
+	else if (fdf->angle_y == -1)
+		fdf->angle_y = 359;
+	if (fdf->angle_z == 360)
+		fdf->angle_z = 0;
+	else if (fdf->angle_z == -1)
+		fdf->angle_z = 359;
 	rotate(fdf);
 	projection(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
+	if (WIDTH > MIN_WIDTH && HEIGHT > MIN_HEIGHT)
+		print_info(fdf);
 }

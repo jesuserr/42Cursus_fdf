@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 12:03:12 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:10:34 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	init_map(char *file, t_fdf *fdf)
 	fdf->zoom = INIT_ZOOM;
 	fdf->offset_x = INIT_OFFSET_X;
 	fdf->offset_y = INIT_OFFSET_Y;
-	fdf->user_scale_z = INIT_ZOOM_Z;
+	fdf->user_scale_z = INC_ZOOM_Z;
 	fdf->num_scales_z = 0;
+	fdf->bar_size = 0;
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);
@@ -48,8 +49,12 @@ void	iso_view(t_fdf *fdf)
 	fdf->angle_y = 35;
 	fdf->angle_z = 30;
 	rotate(fdf);
+	if (WIDTH > MIN_WIDTH && HEIGHT > MIN_HEIGHT)
+		fdf->bar_size = BAR_INFO_H;
 	projection(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
+	if (WIDTH > MIN_WIDTH && HEIGHT > MIN_HEIGHT)
+		print_info(fdf);
 }
 
 void	init_hooks(t_fdf *fdf)

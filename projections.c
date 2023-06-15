@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 13:00:02 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:30:15 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* Scales figure according to screen size, INIT_SCALE value and user zoom */
 /* Uses the worst case scale (smaller one) between x and y */
 /* Writes projection directly in screen buffer (img) */
+/* function project_points(fdf) kept but not used */
 
 void	projection(t_fdf *fdf)
 {
@@ -26,7 +27,6 @@ void	projection(t_fdf *fdf)
 		fdf->scale = fdf->scale_y;
 	project_x_lines(fdf);
 	project_y_lines(fdf);
-	//project_points(fdf);
 }
 
 /* Draws a line between each pair of horizontal points */
@@ -98,7 +98,7 @@ void	project_points(t_fdf *fdf)
 	{
 		x = (fdf->map[i].x * fdf->scale) + (WIDTH / 2) + fdf->offset_x;
 		y = (fdf->map[i].y * fdf->scale) + (HEIGHT / 2) + fdf->offset_y;
-		if (x >= 0 && y >= 0 && x < WIDTH && y < HEIGHT)
+		if (x >= 0 && y >= (0 + fdf->bar_size) && x < WIDTH && y < HEIGHT)
 			mlx_put_pixel(fdf, x, y, fdf->map[i].color);
 		i++;
 	}

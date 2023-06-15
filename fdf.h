@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 11:43:34 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:12:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define HEIGHT			768
 # define ALLOWED_CHR	"-0123456789 ,xABCDEFabcdef"
 # define DEF_COLOR		0xf26e04
+# define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INIT_SCALE		0.66
 # define ROT_ANGLE		1
@@ -39,7 +40,10 @@
 # define INIT_OFFSET_X	0
 # define INIT_OFFSET_Y	0
 # define INC_OFFSET		5
-# define INIT_ZOOM_Z	1.1
+# define INC_ZOOM_Z		1.1
+# define BAR_INFO_H		65
+# define MIN_WIDTH		1000
+# define MIN_HEIGHT		300
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -113,6 +117,7 @@ typedef struct s_fdf
 	int		offset_y;
 	float	user_scale_z;
 	int		num_scales_z;
+	int		bar_size;
 	t_point	*map;
 	t_img	img;
 }	t_fdf;
@@ -130,6 +135,8 @@ void	free_map_and_exit(t_fdf *fdf, int error, int flag);
 void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color);
 void	draw_line(t_line line, t_fdf *fdf);
 void	line_direction(t_line *line, t_line_aux *line_aux);
+void	print_info(t_fdf *fdf);
+void	print_next_line(t_fdf *fdf);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 int		mouse_pressed(int button, int x, int y, t_fdf *fdf);
