@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 22:19:45 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:03:12 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_map(char *file, t_fdf *fdf)
 	fdf->zoom = INIT_ZOOM;
 	fdf->offset_x = INIT_OFFSET_X;
 	fdf->offset_y = INIT_OFFSET_Y;
+	fdf->user_scale_z = INIT_ZOOM_Z;
+	fdf->num_scales_z = 0;
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);

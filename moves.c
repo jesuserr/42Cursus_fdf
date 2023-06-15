@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 22:31:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:27:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@ void	key_action_1(int keycode, t_fdf *fdf)
 		fdf->angle_z -= ROT_ANGLE;
 	else if (keycode == 7)
 		fdf->angle_z += ROT_ANGLE;
-	else if (keycode == 34)
-	{
-		fdf->zoom = INIT_ZOOM;
-		fdf->offset_x = 0;
-		fdf->offset_y = 0;
-		fdf->angle_x = 45;
-		fdf->angle_y = 35;
-		fdf->angle_z = 30;
-	}
 	action_aux(fdf);
 }
 
@@ -50,6 +41,7 @@ void	key_action_2(int keycode, t_fdf *fdf)
 		fdf->angle_x = 90;
 		fdf->angle_y = 0;
 		fdf->angle_z = 0;
+		recover_height(fdf);
 	}
 	else if (keycode == 123)
 		fdf->offset_x -= INC_OFFSET;
@@ -69,8 +61,21 @@ void	mouse_action_1(int button, t_fdf *fdf)
 		fdf->zoom *= INC_ZOOM;
 	else if (button == 5)
 		fdf->zoom /= INC_ZOOM;
+	else if (button == 1 || button == 2)
+		modify_height(button, fdf);
+	else if (button == 3)
+	{
+		fdf->zoom = INIT_ZOOM;
+		fdf->offset_x = 0;
+		fdf->offset_y = 0;
+		fdf->angle_x = 45;
+		fdf->angle_y = 35;
+		fdf->angle_z = 30;
+		recover_height(fdf);
+	}	
 	action_aux(fdf);
 }
+/* Erases the image in memory, calculates and writes the new one */
 
 void	action_aux(t_fdf *fdf)
 {

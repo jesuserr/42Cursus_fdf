@@ -15,7 +15,7 @@ LIBX_DIR = minilibx_macos/
 
 NAME = fdf
 SRCS = errors.c graphics.c hooks.c main.c map_utils.c moves.c projections.c \
-rotations.c utils.c
+rotations.c z_utils.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 

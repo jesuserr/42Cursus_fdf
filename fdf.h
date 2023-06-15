@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/14 22:22:57 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:43:34 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@
 # define INIT_SCALE		0.66
 # define ROT_ANGLE		1
 # define INIT_ZOOM		1
-# define INC_ZOOM		1.05
+# define INC_ZOOM		1.03
 # define INIT_OFFSET_X	0
 # define INIT_OFFSET_Y	0
 # define INC_OFFSET		5
+# define INIT_ZOOM_Z	1.1
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -110,6 +111,8 @@ typedef struct s_fdf
 	float	zoom;
 	int		offset_x;
 	int		offset_y;
+	float	user_scale_z;
+	int		num_scales_z;
 	t_point	*map;
 	t_img	img;
 }	t_fdf;
@@ -160,6 +163,7 @@ void	rotate_y(t_fdf *fdf, float angle);
 void	rotate_z(t_fdf *fdf, float angle);
 
 void	z_centering(t_fdf *fdf);
-void	print_map(t_fdf *fdf);	//temporal for checking
+void	modify_height(int button, t_fdf *fdf);
+void	recover_height(t_fdf *fdf);
 
 #endif
