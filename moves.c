@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 00:32:10 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:44:39 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@
 void	key_action_1(int keycode, t_fdf *fdf)
 {
 	unrotate(fdf);
-	if (keycode == 13)
+	if (keycode == W_KEY)
 		fdf->angle_x += ROT_ANGLE;
-	else if (keycode == 12)
+	else if (keycode == Q_KEY)
 		fdf->angle_x -= ROT_ANGLE;
-	else if (keycode == 0)
+	else if (keycode == A_KEY)
 		fdf->angle_y -= ROT_ANGLE;
-	else if (keycode == 1)
+	else if (keycode == S_KEY)
 		fdf->angle_y += ROT_ANGLE;
-	else if (keycode == 6)
+	else if (keycode == Z_KEY)
 		fdf->angle_z -= ROT_ANGLE;
-	else if (keycode == 7)
+	else if (keycode == X_KEY)
 		fdf->angle_z += ROT_ANGLE;
-	else if (keycode == 123)
+	else if (keycode == LEFT_KEY)
 		fdf->offset_x -= INC_OFFSET;
-	else if (keycode == 124)
+	else if (keycode == RIGHT_KEY)
 		fdf->offset_x += INC_OFFSET;
-	else if (keycode == 125)
+	else if (keycode == DOWN_KEY)
 		fdf->offset_y += INC_OFFSET;
-	else if (keycode == 126)
+	else if (keycode == UP_KEY)
 		fdf->offset_y -= INC_OFFSET;
 	action_aux(fdf);
 }
@@ -49,17 +49,17 @@ void	key_action_2(int keycode, t_fdf *fdf)
 	fdf->offset_x = 0;
 	fdf->offset_y = 0;
 	fdf->angle_z = 0;
-	if (keycode == 34)
+	if (keycode == I_KEY)
 	{
 		fdf->angle_x = 0;
 		fdf->angle_y = 0;
 	}
-	else if (keycode == 31)
+	else if (keycode == O_KEY)
 	{	
 		fdf->angle_x = 90;
 		fdf->angle_y = 0;
 	}
-	else if (keycode == 35)
+	else if (keycode == P_KEY)
 	{	
 		fdf->angle_x = 90;
 		fdf->angle_y = 90;
@@ -85,13 +85,13 @@ void	key_action_3(int keycode, t_fdf *fdf)
 void	mouse_action_1(int button, t_fdf *fdf)
 {
 	unrotate(fdf);
-	if (button == 4)
+	if (button == WHEEL_UP)
 		fdf->zoom *= INC_ZOOM;
-	else if (button == 5)
+	else if (button == WHEEL_DOWN)
 		fdf->zoom /= INC_ZOOM;
-	else if (button == 1 || button == 2)
+	else if (button == LB_BUTTON || button == RB_BUTTON)
 		modify_height(button, fdf);
-	else if (button == 3)
+	else if (button == WHEEL_BUTTON)
 	{
 		fdf->zoom = INIT_ZOOM;
 		fdf->offset_x = 0;

@@ -6,7 +6,7 @@
 #    By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 13:35:34 by jesuserr          #+#    #+#              #
-#    Updated: 2023/05/19 13:35:34 by jesuserr         ###   ########.fr        #
+#    Updated: 2023/06/16 12:59:44 by jesuserr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INCLUDE = -I./ -I./minilibx_macos/ -I./libft/includes/
 RM = rm -f
 CFLAGS = -O3 -Wall -Wextra -Werror
 
-NORM = ${SRCS} fdf.h
+NORM = ${SRCS} fdf.h controls.h
 GREEN = "\033[0;92m"
 RED = "\033[0;91m"
 BLUE = "\033[0;94m"

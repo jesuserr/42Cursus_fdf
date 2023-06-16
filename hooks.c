@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 22:40:00 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:57:56 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	key_pressed(int keycode, t_fdf *fdf)
 {
-	if (keycode == 53)
+	if (keycode == ESC_KEY)
 		close_window(fdf);
-	else if (keycode == 13 || keycode == 12 || keycode == 0 || keycode == 1
-		|| keycode == 6 || keycode == 7 || keycode == 123 || keycode == 124
-		|| keycode == 125 || keycode == 126)
+	else if (keycode == Q_KEY || keycode == W_KEY || keycode == A_KEY
+		|| keycode == S_KEY || keycode == Z_KEY || keycode == X_KEY
+		|| keycode == LEFT_KEY || keycode == RIGHT_KEY || keycode == DOWN_KEY
+		|| keycode == UP_KEY)
 		key_action_1(keycode, fdf);
-	else if (keycode == 35 || keycode == 34 || keycode == 31)
+	else if (keycode == I_KEY || keycode == O_KEY || keycode == P_KEY)
 		key_action_2(keycode, fdf);
-	else if (keycode == 49)
+	else if (keycode == BAR_KEY)
 		key_action_3(keycode, fdf);
 	return (0);
 }
