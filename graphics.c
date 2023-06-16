@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 00:09:09 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:19:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = fdf->img.addr + (y * fdf->img.len + x * (fdf->img.bpp / 8));
+	dst = fdf->img.addr + ((y * fdf->img.len) + (x * (fdf->img.bpp / 8)));
 	*(unsigned int *)dst = color;
 }
 
@@ -66,16 +66,16 @@ void	print_info(t_fdf *fdf)
 	char	*str;
 
 	str = ft_itoa((int)fdf->angle_x);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 10, 22, DEF_COLOR, "x:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 40, 22, WHITE, str);
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 10, 10, DEF_COLOR, "x:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 40, 10, WHITE, str);
 	free(str);
 	str = ft_itoa((int)fdf->angle_y);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 80, 22, DEF_COLOR, "y:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 110, 22, WHITE, str);
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 80, 10, DEF_COLOR, "y:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 110, 10, WHITE, str);
 	free(str);
 	str = ft_itoa((int)fdf->angle_z);
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 150, 22, DEF_COLOR, "z:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 180, 22, WHITE, str);
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 150, 10, DEF_COLOR, "z:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 180, 10, WHITE, str);
 	free(str);
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 230, 10, DEF_COLOR, "Rot.x:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 300, 10, WHITE, "Q/W");
@@ -92,6 +92,8 @@ void	print_info(t_fdf *fdf)
 
 void	print_next_line(t_fdf *fdf)
 {
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 10, 35, DEF_COLOR, "Animation:");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 120, 35, WHITE, "Space Bar");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 230, 35, DEF_COLOR, "Iso View:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 330, 35, WHITE, "Press Wheel");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 470, 35, DEF_COLOR, "Scale Height:");
