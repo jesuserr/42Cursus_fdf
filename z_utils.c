@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   z_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:25:20 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 00:53:47 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:56:25 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	z_centering(t_fdf *fdf)
 		fdf->scale_z = 0.05;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
-		fdf->map[i].z -= ((fdf->z_max + fdf->z_min) / 2.0);
+		//fdf->map[i].z -= ((fdf->z_max + fdf->z_min) / 2.0);
 		fdf->map[i].z *= fdf->scale_z;
 		i++;
 	}
@@ -42,7 +42,7 @@ void	modify_height(int button, t_fdf *fdf)
 	int	i;
 
 	i = 0;
-	if (button == 1)
+	if (button == 1 && fdf->num_scales_z < MAX_Z_SCALES)
 	{
 		while (i < (fdf->x_elem * fdf->y_elem))
 			fdf->map[i++].z *= fdf->user_scale_z;

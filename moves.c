@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 12:44:39 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:04:11 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	key_action_1(int keycode, t_fdf *fdf)
 	else if (keycode == X_KEY)
 		fdf->angle_z += ROT_ANGLE;
 	else if (keycode == LEFT_KEY)
-		fdf->offset_x -= INC_OFFSET;
-	else if (keycode == RIGHT_KEY)
 		fdf->offset_x += INC_OFFSET;
+	else if (keycode == RIGHT_KEY)
+		fdf->offset_x -= INC_OFFSET;
 	else if (keycode == DOWN_KEY)
-		fdf->offset_y += INC_OFFSET;
-	else if (keycode == UP_KEY)
 		fdf->offset_y -= INC_OFFSET;
+	else if (keycode == UP_KEY)
+		fdf->offset_y += INC_OFFSET;
 	action_aux(fdf);
 }
 
@@ -74,13 +74,13 @@ void	key_action_3(int keycode, t_fdf *fdf)
 {
 	(void)keycode;
 	unrotate(fdf);
-	fdf->angle_x += ROT_ANGLE;
+	fdf->angle_x -= ROT_ANGLE;
 	fdf->angle_y += ROT_ANGLE;
-	fdf->angle_z += ROT_ANGLE;
+	fdf->angle_z -= ROT_ANGLE;
 	action_aux(fdf);
 }
 
-/* Zoom, height scale and ISO view */
+/* Zoom, height scale and ISO view (Zoom is limited) */
 
 void	mouse_action_1(int button, t_fdf *fdf)
 {
@@ -100,7 +100,11 @@ void	mouse_action_1(int button, t_fdf *fdf)
 		fdf->angle_y = 35;
 		fdf->angle_z = 30;
 		recover_height(fdf);
-	}	
+	}
+	if (fdf->zoom > ZOOM_MAX)
+		fdf->zoom /= INC_ZOOM;
+	else if (fdf->zoom < ZOOM_MIN)
+		fdf->zoom *= INC_ZOOM;
 	action_aux(fdf);
 }
 
