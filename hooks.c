@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 12:57:56 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:37:22 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ int	mouse_pressed(int button, int x, int y, t_fdf *fdf)
 	return (0);
 }
 
-/* Without mlx_destroy_window & free(fdf->mlx) there are no leaks either !?? */
-
 int	close_window(t_fdf *fdf)
 {
 	free(fdf->raw_map);
 	free(fdf->map);
+	mlx_destroy_image(fdf->mlx, fdf->img.img);
 	mlx_destroy_window(fdf->mlx, fdf->mlx_win);
 	free(fdf->mlx);
 	exit (EXIT_SUCCESS);
