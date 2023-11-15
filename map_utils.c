@@ -6,14 +6,13 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:23:42 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/11 18:15:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:13:21 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /* Uses GNL to read the fdf map and counts the elements of the first row */
-
 char	*read_map(char *file, t_fdf *fdf)
 {
 	int		fd;
@@ -46,7 +45,6 @@ char	*read_map(char *file, t_fdf *fdf)
 /* Returns the number of elements on a given line */
 /* Same function as the one used in ft_printf with modification */
 /* to deal with line feeds \n (var jump) */
-
 int	count_x_elem(char *line, int jump)
 {
 	int	flag;
@@ -74,7 +72,6 @@ int	count_x_elem(char *line, int jump)
 /* and that no line contains any forbidden characters (ALLOWED_CHR) */
 /* If there is only one line (no 3D element) -> finishes too */
 /* After map parsing, centers and scales Z coordinates, figure 100% centered */
-
 void	check_map(t_fdf *fdf)
 {
 	char	**split;
@@ -107,7 +104,6 @@ void	check_map(t_fdf *fdf)
 /* Determines max and min values of Z to center all heights later */
 /* Note: k can be replaced by (i + (j * fdf->x_elem)) */
 /*       harder to read but can help to save a couple of lines if needed */
-
 void	parse_map(t_fdf *fdf, char *line)
 {
 	char		**split;
@@ -139,7 +135,6 @@ void	parse_map(t_fdf *fdf, char *line)
 
 /* Converts the str containing the hex color to an int value */
 /* similar philosophy as ft_atoi */
-
 int	get_hex_color(char *hex_color)
 {
 	char	**split;
@@ -161,7 +156,7 @@ int	get_hex_color(char *hex_color)
 		else if (str [i] >= 'A' && str [i] <= 'F')
 			color = color + str [i] - 55;
 		i++;
-	}	
+	}
 	free_split(split);
 	return (color);
 }

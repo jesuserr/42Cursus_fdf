@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:40:52 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 15:10:34 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:16:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_map(char *file, t_fdf *fdf)
 	fdf->user_scale_z = INC_ZOOM_Z;
 	fdf->num_scales_z = 0;
 	fdf->bar_size = 0;
+	ft_memset(&fdf->key, 0, sizeof(t_keys));
 	ft_printf ("%sOK!\nAnalyzing Map... ", BLUE);
 	check_map(fdf);
 	ft_printf ("%sOK!\n", BLUE);
@@ -62,6 +63,9 @@ void	init_hooks(t_fdf *fdf)
 	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
 	mlx_hook(fdf->mlx_win, 2, 0, key_pressed, fdf);
 	mlx_hook(fdf->mlx_win, 4, 0, mouse_pressed, fdf);
+	mlx_loop_hook(fdf->mlx, main_loop, fdf);
+	mlx_hook(fdf->mlx_win, 3, 0, key_released, fdf);
+	mlx_hook(fdf->mlx_win, 5, 0, mouse_released, fdf);
 }
 
 int	main(int argc, char **argv)

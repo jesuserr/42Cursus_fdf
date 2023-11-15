@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/16 12:19:43 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:12:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	mlx_put_pixel(t_fdf *fdf, int x, int y, int color)
 
 /* Uses Bresenham's line algorithm (extended to work in any octant) */
 /* Pixels outside screen boundaries (including info bar) are not printed */
-
 void	draw_line(t_line line, t_fdf *fdf)
 {
 	t_line_aux	line_aux;
@@ -37,7 +36,7 @@ void	draw_line(t_line line, t_fdf *fdf)
 			&& line.x0 < WIDTH && line.y0 < HEIGHT)
 			mlx_put_pixel(fdf, line.x0, line.y0, line.color0);
 		if ((2 * line_aux.error) >= line_aux.dy)
-		{			
+		{
 			line_aux.error = line_aux.error + line_aux.dy;
 			line.x0 = line.x0 + line_aux.sx;
 		}

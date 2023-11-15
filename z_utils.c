@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:25:20 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/18 19:56:25 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:14:22 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* Line equation used for that purpose */
 /* For 42.fdf applied scale is 0.1 // Minimum 0.05 */
 /* Alt: fdf->scale_z = (-0.00072 * (fdf->z_max - fdf->z_min)) + 0.10792; */
-
+/* (inside while) fdf->map[i].z -= ((fdf->z_max + fdf->z_min) / 2.0); */
 void	z_centering(t_fdf *fdf)
 {
 	int	i;
@@ -27,28 +27,27 @@ void	z_centering(t_fdf *fdf)
 		fdf->scale_z = 0.05;
 	while (i < (fdf->x_elem * fdf->y_elem))
 	{
-		//fdf->map[i].z -= ((fdf->z_max + fdf->z_min) / 2.0);
 		fdf->map[i].z *= fdf->scale_z;
 		i++;
 	}
 }
+
 /* Modifies the height of the object by the scale given in user_scale_z */
 /* Keeps track of the number of height modifications in order to be */
 /* able to recover the original view when the ISO or Parallel views */
 /* are recalled (num_scales_z) */
-
-void	modify_height(int button, t_fdf *fdf)
+void	modify_height(t_fdf *fdf)
 {
 	int	i;
 
 	i = 0;
-	if (button == 1 && fdf->num_scales_z < MAX_Z_SCALES)
+	if (fdf->key.mlb_press == 1 && fdf->num_scales_z < MAX_Z_SCALES)
 	{
 		while (i < (fdf->x_elem * fdf->y_elem))
 			fdf->map[i++].z *= fdf->user_scale_z;
 		fdf->num_scales_z++;
 	}
-	else if (button == 2)
+	else if (fdf->key.mrb_press == 1)
 	{
 		while (i < (fdf->x_elem * fdf->y_elem))
 			fdf->map[i++].z /= fdf->user_scale_z;
@@ -58,7 +57,6 @@ void	modify_height(int button, t_fdf *fdf)
 
 /* Uses the variable num_scales_z to recover the original height of the */
 /* object. Used by ISO an Parallel calls. */
-
 void	recover_height(t_fdf *fdf)
 {
 	int	i;

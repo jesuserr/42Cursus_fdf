@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/18 19:26:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:16:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,27 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_keys
+{
+	int		q_press;
+	int		w_press;
+	int		a_press;
+	int		s_press;
+	int		z_press;
+	int		x_press;
+	int		left_press;
+	int		right_press;
+	int		down_press;
+	int		up_press;
+	int		i_press;
+	int		o_press;
+	int		p_press;
+	int		bar_press;
+	int		mlb_press;
+	int		mrb_press;
+	int		mwb_press;		
+}	t_keys;
+
 typedef struct s_fdf
 {
 	void	*mlx;
@@ -122,8 +143,9 @@ typedef struct s_fdf
 	float	user_scale_z;
 	int		num_scales_z;
 	int		bar_size;
+	t_keys	key;
 	t_point	*map;
-	t_img	img;
+	t_img	img;	
 }	t_fdf;
 
 /*
@@ -142,8 +164,13 @@ void	line_direction(t_line *line, t_line_aux *line_aux);
 void	print_info(t_fdf *fdf);
 void	print_next_line(t_fdf *fdf);
 
-int		key_pressed(int keycode, t_fdf *fdf);
 int		mouse_pressed(int button, int x, int y, t_fdf *fdf);
+int		mouse_released(int button, int x, int y, t_fdf *fdf);
+
+int		key_pressed(int keycode, t_fdf *fdf);
+int		key_pressed_aux(int keycode, t_fdf *fdf);
+int		key_released(int keycode, t_fdf *fdf);
+int		key_released_aux(int keycode, t_fdf *fdf);
 int		close_window(t_fdf *fdf);
 
 void	init_map(char *file, t_fdf *fdf);
@@ -157,11 +184,11 @@ int		count_x_elem(char *line, int jump);
 void	parse_map(t_fdf *fdf, char *line);
 int		get_hex_color(char *color);
 
-void	key_action_1(int keycode, t_fdf *fdf);
-void	key_action_2(int keycode, t_fdf *fdf);
-void	key_action_3(int keycode, t_fdf *fdf);
-void	mouse_action_1(int button, t_fdf *fdf);
-void	action_aux(t_fdf *fdf);
+void	key_action_1(t_fdf *fdf);
+void	key_action_2(t_fdf *fdf);
+void	key_action_3(t_fdf *fdf);
+void	mouse_action_1(t_fdf *fdf);
+int		main_loop(t_fdf *fdf);
 
 void	projection(t_fdf *fdf);
 void	project_x_lines(t_fdf *fdf);
@@ -175,7 +202,7 @@ void	rotate_y(t_fdf *fdf, float angle);
 void	rotate_z(t_fdf *fdf, float angle);
 
 void	z_centering(t_fdf *fdf);
-void	modify_height(int button, t_fdf *fdf);
+void	modify_height(t_fdf *fdf);
 void	recover_height(t_fdf *fdf);
 
 #endif

@@ -6,14 +6,13 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:22:46 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/13 19:45:21 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:13:56 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 /* All rotations are clockwise */
-
 void	rotate(t_fdf *fdf)
 {
 	rotate_x(fdf, fdf->angle_x);

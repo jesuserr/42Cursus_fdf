@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:43:38 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/15 15:30:15 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:13:52 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /* Uses the worst case scale (smaller one) between x and y */
 /* Writes projection directly in screen buffer (img) */
 /* function project_points(fdf) kept but not used */
-
 void	projection(t_fdf *fdf)
 {
 	fdf->scale_x = (WIDTH * INIT_SCALE * fdf->zoom) / (fdf->x_elem - 1);
@@ -33,7 +32,6 @@ void	projection(t_fdf *fdf)
 /* A copy of struct "line" is passed to draw_line since */
 /* values are modified inside and would affect this function */
 /* Offset used for translation of the figure by user */
-
 void	project_x_lines(t_fdf *fdf)
 {
 	t_line	line;
@@ -58,7 +56,6 @@ void	project_x_lines(t_fdf *fdf)
 /* A copy of struct "line" is passed to draw_line since */
 /* values are modified inside and would affect this function */
 /* Offset used for translation of the figure by user */
-
 void	project_y_lines(t_fdf *fdf)
 {
 	t_line	line;
@@ -86,7 +83,6 @@ void	project_y_lines(t_fdf *fdf)
 /* Draws only the points, no lines */
 /* Values outside screen boundaries are not printed */
 /* Offset used for translation of the figure by user */
-
 void	project_points(t_fdf *fdf)
 {
 	int		i;

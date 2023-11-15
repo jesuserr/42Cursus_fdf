@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/06/12 10:12:37 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:12:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_error_handler(int error)
 }
 
 /* To be used mainly with double pointers used on ft_split */
-
 void	free_split(char **str)
 {
 	size_t	i;
@@ -42,7 +41,6 @@ void	free_split(char **str)
 }
 
 /* Used mainly to save lines of code and meet norm on some cases */
-
 void	free_and_exit(int error, char *ptr)
 {
 	free(ptr);
@@ -50,7 +48,6 @@ void	free_and_exit(int error, char *ptr)
 }
 
 /* Another free function to save space - Two previous functions combined */
-
 void	free_split_and_exit(char **str, int error, char *ptr)
 {
 	size_t	i;
@@ -66,7 +63,6 @@ void	free_split_and_exit(char **str, int error, char *ptr)
 /* Function to exit in controlled way when there is an error during */
 /* the mlx init. Flag controls the step where the error happened and */
 /* frees in consequence */
-
 void	free_map_and_exit(t_fdf *fdf, int error, int flag)
 {
 	if (flag == 1)
