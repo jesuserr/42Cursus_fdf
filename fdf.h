@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 09:16:50 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:45:07 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # include "libft/includes/ft_printf.h"
 # include "libft/includes/libft.h"
 # include "mlx.h"
+# include "mlx_error.h"
 # include <fcntl.h>	// for open
 # include <math.h>
 # include "controls.h"

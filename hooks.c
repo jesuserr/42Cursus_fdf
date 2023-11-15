@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 01:15:11 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:58:24 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ int	close_window(t_fdf *fdf)
 	free(fdf->raw_map);
 	free(fdf->map);
 	mlx_destroy_image(fdf->mlx, fdf->img.img);
+	mlx_clear_window(fdf->mlx, fdf->mlx_win);
 	mlx_destroy_window(fdf->mlx, fdf->mlx_win);
+	mlx_destroy_image(fdf->mlx, ((mlx_ptr_t *)fdf->mlx)->img_list);
+	free(((mlx_ptr_t *)fdf->mlx)->img_list);
 	free(fdf->mlx);
 	exit (EXIT_SUCCESS);
 }

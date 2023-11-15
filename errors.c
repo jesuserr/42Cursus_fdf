@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 21:10:39 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 09:12:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:09:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,17 @@ void	free_split_and_exit(char **str, int error, char *ptr)
 /* frees in consequence */
 void	free_map_and_exit(t_fdf *fdf, int error, int flag)
 {
-	if (flag == 1)
+	if (flag == 1 || flag == 2)
+	{
+		mlx_destroy_image(fdf->mlx, ((mlx_ptr_t *)fdf->mlx)->img_list);
+		free(((mlx_ptr_t *)fdf->mlx)->img_list);
 		free(fdf->mlx);
+	}
 	if (flag == 2)
+	{
+		mlx_clear_window(fdf->mlx, fdf->mlx_win);
 		mlx_destroy_window(fdf->mlx, fdf->mlx_win);
+	}
 	free(fdf->raw_map);
 	free(fdf->map);
 	ft_error_handler(error);
