@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 16:13:15 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 22:08:50 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define ERROR_MAP			4
 # define ERROR_MLX			5
 
-# define WIDTH			1024
-# define HEIGHT			768
+# define WIDTH			1200
+# define HEIGHT			900
 # define ALLOWED_CHR	"-0123456789 ,xABCDEFabcdef"
 # define DEF_COLOR		0xf26e04
 # define WHITE			0xFFFFFF
@@ -42,7 +42,7 @@
 # define ZOOM_MIN		0.1
 # define INIT_OFFSET_X	0
 # define INIT_OFFSET_Y	0
-# define INC_OFFSET		10
+# define INC_OFFSET		5
 # define INC_ZOOM_Z		1.1
 # define MAX_Z_SCALES	50
 # define BAR_INFO_H		90
@@ -124,9 +124,9 @@ typedef struct s_keys
 	int		mrb_press;
 	int		mwb_press;
 	int		mouse_x;
-	int		mouse_x_dir;
+	int		mou_x_dir;
 	int		mouse_y;
-	int		mouse_y_dir;
+	int		mou_y_dir;
 }	t_keys;
 
 typedef struct s_fdf

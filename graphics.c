@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:03:40 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 16:10:07 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 22:06:42 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,10 @@ void	print_next_line(t_fdf *fdf)
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 470, 35, DEF_COLOR, "Rotate x/y:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 590, 35, WHITE, "Mouse Left Button");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 770, 35, DEF_COLOR, "Move:");
-	mlx_string_put(fdf->mlx, fdf->mlx_win, 830, 35, WHITE, "Arrow Keys");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 830, 35, WHITE, "Arrow Keys or");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 230, 60, DEF_COLOR, "Animation:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 340, 60, WHITE, "Space Bar");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 470, 60, DEF_COLOR, "Scale Height:");
 	mlx_string_put(fdf->mlx, fdf->mlx_win, 610, 60, WHITE, "1/2");
+	mlx_string_put(fdf->mlx, fdf->mlx_win, 830, 60, WHITE, "Mouse Right Butt.");
 }

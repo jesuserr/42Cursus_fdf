@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 00:50:27 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 15:40:55 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 21:56:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,17 @@ int	mouse_released(int button, int x, int y, t_fdf *fdf)
 
 int	mouse_move(int x, int y, t_fdf *fdf)
 {
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT && fdf->key.mlb_press)
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT && \
+	(fdf->key.mlb_press || fdf->key.mrb_press))
 	{
 		if (fdf->key.mouse_x > x)
-			fdf->key.mouse_y_dir = 1;
-		else if (fdf->key.mouse_x < x)
-			fdf->key.mouse_y_dir = 2;
+			fdf->key.mou_y_dir = 1;
+		if (fdf->key.mouse_x < x)
+			fdf->key.mou_y_dir = 2;
 		if (fdf->key.mouse_y > y)
-			fdf->key.mouse_x_dir = 1;
-		else if (fdf->key.mouse_y < y)
-			fdf->key.mouse_x_dir = 2;
+			fdf->key.mou_x_dir = 1;
+		if (fdf->key.mouse_y < y)
+			fdf->key.mou_x_dir = 2;
 		fdf->key.mouse_x = x;
 		fdf->key.mouse_y = y;
 		if ((x < (WIDTH / 100) || x > (99 * WIDTH / 100)) || \

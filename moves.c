@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 15:31:31 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 21:56:38 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 /* Rotations and arrow keys movements */
 void	key_action_1(t_fdf *fdf)
 {
-	if (fdf->key.w_press == 1 || fdf->key.mouse_x_dir == 1)
+	if (fdf->key.w_press || (fdf->key.mou_x_dir == 1 && fdf->key.mlb_press))
 		fdf->angle_x += ROT_ANGLE;
-	if (fdf->key.q_press == 1 || fdf->key.mouse_x_dir == 2)
+	if (fdf->key.q_press || (fdf->key.mou_x_dir == 2 && fdf->key.mlb_press))
 		fdf->angle_x -= ROT_ANGLE;
-	if (fdf->key.s_press == 1 || fdf->key.mouse_y_dir == 1)
+	if (fdf->key.s_press || (fdf->key.mou_y_dir == 1 && fdf->key.mlb_press))
 		fdf->angle_y += ROT_ANGLE;
-	if (fdf->key.a_press == 1 || fdf->key.mouse_y_dir == 2)
+	if (fdf->key.a_press || (fdf->key.mou_y_dir == 2 && fdf->key.mlb_press))
 		fdf->angle_y -= ROT_ANGLE;
-	if (fdf->key.z_press == 1)
+	if (fdf->key.z_press)
 		fdf->angle_z -= ROT_ANGLE;
-	if (fdf->key.x_press == 1)
+	if (fdf->key.x_press)
 		fdf->angle_z += ROT_ANGLE;
-	if (fdf->key.left_press == 1)
+	if (fdf->key.left_press || (fdf->key.mou_y_dir == 1 && fdf->key.mrb_press))
 		fdf->offset_x += INC_OFFSET;
-	if (fdf->key.right_press == 1)
+	if (fdf->key.right_press || (fdf->key.mou_y_dir == 2 && fdf->key.mrb_press))
 		fdf->offset_x -= INC_OFFSET;
-	if (fdf->key.down_press == 1)
+	if (fdf->key.down_press || (fdf->key.mou_x_dir == 2 && fdf->key.mrb_press))
 		fdf->offset_y -= INC_OFFSET;
-	if (fdf->key.up_press == 1)
+	if (fdf->key.up_press || (fdf->key.mou_x_dir == 1 && fdf->key.mrb_press))
 		fdf->offset_y += INC_OFFSET;
-	fdf->key.mouse_x_dir = 0;
-	fdf->key.mouse_y_dir = 0;
+	fdf->key.mou_x_dir = 0;
+	fdf->key.mou_y_dir = 0;
 }
 
 /* Deals with the three available views */
