@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 09:16:50 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 10:05:13 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	key_action_3(t_fdf *fdf)
 	}
 }
 
-/* Zoom, height scale and ISO view (Zoom is limited) */
+/* Height scale and ISO view */
 void	mouse_action_1(t_fdf *fdf)
 {
 	if (fdf->key.mrb_press || fdf->key.mlb_press)
@@ -91,10 +91,6 @@ void	mouse_action_1(t_fdf *fdf)
 		fdf->angle_z = 30;
 		recover_height(fdf);
 	}
-	if (fdf->zoom > ZOOM_MAX)
-		fdf->zoom /= INC_ZOOM;
-	else if (fdf->zoom < ZOOM_MIN)
-		fdf->zoom *= INC_ZOOM;
 }
 
 /* Erases the image in memory; calculates and writes the new one */

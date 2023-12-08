@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 10:45:07 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 10:05:41 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define INIT_SCALE		0.75
 # define ROT_ANGLE		1
 # define INIT_ZOOM		1
-# define INC_ZOOM		1.03
+# define INC_ZOOM		1.1
 # define ZOOM_MAX		40
 # define ZOOM_MIN		0.1
 # define INIT_OFFSET_X	0
