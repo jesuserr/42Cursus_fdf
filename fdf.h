@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 10:05:41 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:16:43 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,11 @@ typedef struct s_keys
 	int		bar_press;
 	int		mlb_press;
 	int		mrb_press;
-	int		mwb_press;		
+	int		mwb_press;
+	int		mouse_x;
+	int		mouse_x_dir;
+	int		mouse_y;
+	int		mouse_y_dir;
 }	t_keys;
 
 typedef struct s_fdf
@@ -167,6 +171,7 @@ void	print_next_line(t_fdf *fdf);
 
 int		mouse_pressed(int button, int x, int y, t_fdf *fdf);
 int		mouse_released(int button, int x, int y, t_fdf *fdf);
+int		mouse_move(int x, int y, t_fdf *fdf);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 int		key_pressed_aux(int keycode, t_fdf *fdf);

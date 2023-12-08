@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 10:05:13 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:37:27 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /* Rotations and arrow keys movements */
 void	key_action_1(t_fdf *fdf)
 {
-	if (fdf->key.w_press == 1)
+	if (fdf->key.w_press == 1 || fdf->key.mouse_x_dir == 1)
 		fdf->angle_x += ROT_ANGLE;
-	if (fdf->key.q_press == 1)
+	if (fdf->key.q_press == 1 || fdf->key.mouse_x_dir == 2)
 		fdf->angle_x -= ROT_ANGLE;
-	if (fdf->key.a_press == 1)
-		fdf->angle_y -= ROT_ANGLE;
-	if (fdf->key.s_press == 1)
+	if (fdf->key.s_press == 1 || fdf->key.mouse_y_dir == 1)
 		fdf->angle_y += ROT_ANGLE;
+	if (fdf->key.a_press == 1 || fdf->key.mouse_y_dir == 2)
+		fdf->angle_y -= ROT_ANGLE;
 	if (fdf->key.z_press == 1)
 		fdf->angle_z -= ROT_ANGLE;
 	if (fdf->key.x_press == 1)
@@ -35,6 +35,8 @@ void	key_action_1(t_fdf *fdf)
 		fdf->offset_y -= INC_OFFSET;
 	if (fdf->key.up_press == 1)
 		fdf->offset_y += INC_OFFSET;
+	fdf->key.mouse_x_dir = 0;
+	fdf->key.mouse_y_dir = 0;
 }
 
 /* Deals with the three available views */

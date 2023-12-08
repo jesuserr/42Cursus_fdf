@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:25:20 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 09:14:22 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 13:18:21 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	modify_height(t_fdf *fdf)
 			fdf->map[i++].z *= fdf->user_scale_z;
 		fdf->num_scales_z++;
 	}
-	else if (fdf->key.mrb_press == 1)
+	else if (fdf->key.mrb_press == 1 && fdf->num_scales_z > -MAX_Z_SCALES)
 	{
 		while (i < (fdf->x_elem * fdf->y_elem))
 			fdf->map[i++].z /= fdf->user_scale_z;
