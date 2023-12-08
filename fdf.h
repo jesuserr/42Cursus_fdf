@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:08 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 13:16:43 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:13:15 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 # define WHITE			0xFFFFFF
 # define PI				3.141592654
 # define INIT_SCALE		0.75
-# define ROT_ANGLE		1
+# define ROT_ANGLE		2
+# define THREE_ROT_ANG	0.5
 # define INIT_ZOOM		1
 # define INC_ZOOM		1.1
 # define ZOOM_MAX		40
@@ -44,7 +45,7 @@
 # define INC_OFFSET		10
 # define INC_ZOOM_Z		1.1
 # define MAX_Z_SCALES	50
-# define BAR_INFO_H		65
+# define BAR_INFO_H		90
 # define MIN_WIDTH		1000
 # define MIN_HEIGHT		300
 
@@ -109,6 +110,8 @@ typedef struct s_keys
 	int		s_press;
 	int		z_press;
 	int		x_press;
+	int		one_press;
+	int		two_press;
 	int		left_press;
 	int		right_press;
 	int		down_press;
@@ -172,6 +175,7 @@ void	print_next_line(t_fdf *fdf);
 int		mouse_pressed(int button, int x, int y, t_fdf *fdf);
 int		mouse_released(int button, int x, int y, t_fdf *fdf);
 int		mouse_move(int x, int y, t_fdf *fdf);
+void	normalize_angles(t_fdf *fdf);
 
 int		key_pressed(int keycode, t_fdf *fdf);
 int		key_pressed_aux(int keycode, t_fdf *fdf);

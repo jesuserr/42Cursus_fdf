@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:54:26 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/11/15 10:58:24 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:28:45 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int	key_pressed_aux(int keycode, t_fdf *fdf)
 		fdf->key.p_press = 1;
 	else if (keycode == BAR_KEY)
 		fdf->key.bar_press = 1;
+	else if (keycode == ONE_KEY)
+		fdf->key.one_press = 1;
+	else if (keycode == TWO_KEY)
+		fdf->key.two_press = 1;
 	return (0);
 }
 
@@ -87,6 +91,10 @@ int	key_released_aux(int keycode, t_fdf *fdf)
 		fdf->key.p_press = 0;
 	else if (keycode == BAR_KEY)
 		fdf->key.bar_press = 0;
+	else if (keycode == ONE_KEY)
+		fdf->key.one_press = 0;
+	else if (keycode == TWO_KEY)
+		fdf->key.two_press = 0;
 	return (0);
 }
 

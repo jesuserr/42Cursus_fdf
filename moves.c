@@ -6,7 +6,7 @@
 /*   By: jesuserr <jesuserr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:47:50 by jesuserr          #+#    #+#             */
-/*   Updated: 2023/12/08 13:37:27 by jesuserr         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:31:31 by jesuserr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ void	key_action_3(t_fdf *fdf)
 {
 	if (fdf->key.bar_press == 1)
 	{
-		fdf->angle_x -= ROT_ANGLE;
-		fdf->angle_y += ROT_ANGLE;
-		fdf->angle_z -= ROT_ANGLE;
+		fdf->angle_x -= THREE_ROT_ANG;
+		fdf->angle_y += THREE_ROT_ANG;
+		fdf->angle_z -= THREE_ROT_ANG;
 	}
+	if (fdf->key.one_press || fdf->key.two_press)
+		modify_height(fdf);
 }
 
 /* Height scale and ISO view */
 void	mouse_action_1(t_fdf *fdf)
 {
-	if (fdf->key.mrb_press || fdf->key.mlb_press)
-		modify_height(fdf);
-	else if (fdf->key.mwb_press)
+	if (fdf->key.mwb_press)
 	{
 		fdf->zoom = INIT_ZOOM;
 		fdf->offset_x = 0;
@@ -101,18 +101,7 @@ void	mouse_action_1(t_fdf *fdf)
 int	main_loop(t_fdf *fdf)
 {
 	ft_bzero(fdf->img.addr, WIDTH * HEIGHT * fdf->img.bpp / 8);
-	if (fdf->angle_x == 360)
-		fdf->angle_x = 0;
-	else if (fdf->angle_x == -1)
-		fdf->angle_x = 359;
-	if (fdf->angle_y == 360)
-		fdf->angle_y = 0;
-	else if (fdf->angle_y == -1)
-		fdf->angle_y = 359;
-	if (fdf->angle_z == 360)
-		fdf->angle_z = 0;
-	else if (fdf->angle_z == -1)
-		fdf->angle_z = 359;
+	normalize_angles(fdf);
 	projection(fdf);
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img.img, 0, 0);
 	if (WIDTH > MIN_WIDTH && HEIGHT > MIN_HEIGHT)
